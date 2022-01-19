@@ -51,7 +51,7 @@ router.route('/:id/update').post((req, res) => {
 // DELETE
 router.route('/:id').delete((req, res) => {
   Pack.findByIdAndDelete(req.params.id)
-  .then(() => res.json(`Pack ${req.body.title} (${req.params.id}) deleted!`))
+  .then(() => res.json(`Pack with ID (${req.params.id}) deleted!`))
   .catch(err => res.status(400).json(`Error: ${err}`));
 });
 
