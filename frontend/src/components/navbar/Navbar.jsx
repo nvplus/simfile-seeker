@@ -2,6 +2,7 @@ import { React } from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import AddPackButton from '../buttons/AddPackButton';
+import logo from "../../assets/icons/logo.png"
 
 const Navbar = () => {
     const NavbarContainer = styled.div`
@@ -27,12 +28,19 @@ const Navbar = () => {
         }
     `
 
+    const LogoContainer = styled.li`
+        
+        img{
+            height: 20px;
+        }
+    `
     return (
         <NavbarContainer>
             <NavList>
-                <li>
-                    <Link to='/'>Home</Link>
-                </li>
+                <LogoContainer>
+                    
+                    <Link to='/'><img src={logo} alt="Logo"/></Link>
+                </LogoContainer>
 
                 <li>
                     <Link to='/about'>About</Link>

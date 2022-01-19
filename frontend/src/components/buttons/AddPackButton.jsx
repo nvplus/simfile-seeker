@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const AddPackButton = (props) => {
-    const Button = styled.a`
+    const Button = styled.div`
         border-radius: 5px;
         text-decoration: none;
         color: white;
