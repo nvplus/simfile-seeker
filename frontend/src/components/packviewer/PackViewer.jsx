@@ -8,16 +8,20 @@ const PackViewer = () => {
     const [packs, setPacks] = useState([]);
 
     const PackViewerContainer = styled.div`
-        display: inline-flex;
+        display: flex;
+        justify-content: center;
         width: 100%;
         flex-wrap:  wrap;
         background-color: #424242;
+        margin:auto;
+        padding: 20px 10px;
     `
 
     useEffect(() => {
         axios.get('http://localhost:5000/packs')
         .then(res => {
             setPacks(res.data);
+            console.log(res.data);
             console.log(`Successfully retrieved ${res.data.length} pack(s)`);
         })
         .catch(err => console.log(err))
@@ -25,7 +29,7 @@ const PackViewer = () => {
 
     return (
         <PackViewerContainer> 
-           {packs.map(pack => <PackCard packData={pack} key={pack._id}/>)}
+                {packs.map(pack => <PackCard packData={pack} key={pack._id}/>)}
         </PackViewerContainer>
     )
 }
