@@ -1,4 +1,4 @@
-const TagNames = {
+export const TagNames = {
     "stamina": "Stamina",
     "allaround": "All Around",
     "footspeed": "Footspeed",

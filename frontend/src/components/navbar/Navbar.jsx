@@ -43,7 +43,7 @@ const Navbar = () => {
                 </li>
 
                 <li>
-                    <Link to='/packs/add'><AddPackButton /></Link>
+                    <Link to='/packs/add'><AddPackButton>Add a Pack</AddPackButton></Link>
                 </li>
             </NavList>
         </NavbarContainer>

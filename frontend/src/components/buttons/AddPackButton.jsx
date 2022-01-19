@@ -24,7 +24,7 @@ const AddPackButton = (props) => {
     `
 
     return (
-        <Button href="#">
+        <Button>
             <p>Add a Pack</p>
         </Button>
     )   

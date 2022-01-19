@@ -9,6 +9,7 @@ import { Packs, Home, About, AddPack } from "./routes";
 import { Navbar } from "./components";
 import styled from "styled-components";
 
+
 const AppContainer = styled.div`
   width: 60%;
   margin: auto;
@@ -17,19 +18,21 @@ const AppContainer = styled.div`
 const  App = () => {
   return (
     <>
+
       <Router>
           <Navbar />
-          <AppContainer>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About/>} />
-              <Route path="/packs/add" element={<Packs/>} >
-                <Route path="" element={<AddPack />} />
-              </Route>
-            </Routes>
-          </AppContainer>
+            <AppContainer>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About/>} />
+                <Route path="/packs" element={<Packs/>} >
+                  <Route path="add" element={<AddPack />} />
+                </Route>
+              </Routes>
+            </AppContainer>
           <GlobalStyle />
       </Router>
+
     </>
   );
 }
