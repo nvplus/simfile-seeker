@@ -1,12 +1,15 @@
 import { React } from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import AddPackButton from '../buttons/AddPackButton';
 
 const Navbar = () => {
     const NavbarContainer = styled.div`
         background-color: #8AA8A3;
         display:flex;
         position: sticky;
+        align-items: center;
+        margin-bottom: 20px;
     `
 
     const NavList = styled.ul`
@@ -37,6 +40,10 @@ const Navbar = () => {
 
                 <li>
                     <Link to='/packs'>Random Pack</Link>
+                </li>
+
+                <li>
+                    <Link to='/packs/add'><AddPackButton /></Link>
                 </li>
             </NavList>
         </NavbarContainer>

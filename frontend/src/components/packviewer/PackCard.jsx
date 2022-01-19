@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import Tags from '../tags/Tags';
 import DownloadButton from '../buttons/DownloadButton';
 
+/**
+ * A display card for a simfile pack.
+ * @param {Object} packData  An object containing details of a pack. {author, title, description, banner_url, download_url, tags}
+ */
 export const PackCard = (props) => {
     const { packData } = props;
 
@@ -61,7 +65,6 @@ export const PackCard = (props) => {
 
     return (
         <PackContainer>
-
             <a href={packData.download_url} target="_blank"><img src={packData.banner_url} /></a>
             <TextContent>
                 <b className="title">{packData.title}</b>

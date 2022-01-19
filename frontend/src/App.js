@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import GlobalStyle from './globalStyles';
-import { Packs, Home } from "./routes";
+import { Packs, Home, About, AddPack } from "./routes";
 import { Navbar } from "./components";
 import styled from "styled-components";
 
@@ -22,7 +22,10 @@ const  App = () => {
           <AppContainer>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/packs" element={<Packs/>} />
+              <Route path="/about" element={<About/>} />
+              <Route path="/packs/add" element={<Packs/>} >
+                <Route path="" element={<AddPack />} />
+              </Route>
             </Routes>
           </AppContainer>
           <GlobalStyle />
