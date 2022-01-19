@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Tags from '../tags/Tags';
 import DownloadButton from '../buttons/DownloadButton';
+import { Button } from "@mui/material";
+import axios from "axios";
 
 /**
  * A display card for a simfile pack.
@@ -9,6 +11,18 @@ import DownloadButton from '../buttons/DownloadButton';
  */
 export const PackCard = (props) => {
     const { packData } = props;
+
+    const handleDeleteButtonClick = () => {
+        axios.delete(`http://localhost:5000/packs/${packData._id}`)
+        .then(res => {
+            alert(res.data);
+            console.log(res.data);
+        })
+        .catch(e => {
+            alert(e);
+            console.log(e);
+        })
+    }
 
     const PackContainer = styled.div`
         width: 320px;
@@ -45,7 +59,7 @@ export const PackCard = (props) => {
     `
 
     const Description = styled.div`
-        margin-top: 5px;
+        margin: 5px 0px;
         font-size: 11px;
         font-weight: 300;
         height: 40px;
@@ -58,11 +72,11 @@ export const PackCard = (props) => {
 
     const DownloadButtonContainer = styled.div`
         display: flex;
-        margin-top: 8px;
-        justify-content: flex-end;
+        
+        justify-content: space-between;
+        align-items: center;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     `
-
     return (
         <PackContainer>
             <a href={packData.download_url} target="_blank"><img src={packData.banner_url} /></a>
@@ -72,8 +86,11 @@ export const PackCard = (props) => {
                 <Tags tags={packData.tags}/>
                 <Description>{packData.description}</Description>
                 <DownloadButtonContainer>
+                    <Button color="error" onClick={handleDeleteButtonClick}>Delete</Button>
                     <DownloadButton download_url={packData.download_url} />
                 </DownloadButtonContainer>
+
+             
             </TextContent>
         </PackContainer>
     )

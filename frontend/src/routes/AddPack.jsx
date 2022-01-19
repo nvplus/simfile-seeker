@@ -65,14 +65,19 @@ const AddPack = () => {
     `
 
     const handlePackSubmission = (data) => {
-        data["tags"] = tags.toString();
-
+        data["tags"] = tags;
+        
         axios.post("http://localhost:5000/packs/add", data)
         .then(res => {
             console.log(res.data);
             alert(res.data);
+
+            // navigate to pack's page after this.
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            alert(err);
+            console.log(err);
+        })
     }
 
     const handleError = (e) => console.log("error" + e);
