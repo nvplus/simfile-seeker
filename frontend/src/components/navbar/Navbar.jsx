@@ -6,54 +6,64 @@ import logo from "../../assets/icons/logo.png"
 
 const Navbar = () => {
     const NavbarContainer = styled.div`
-        background-color: #8AA8A3;
-        display:flex;
-        position: sticky;
-        align-items: center;
+        display: flex;
         margin-bottom: 20px;
+        height: 70px;
+        position: sticky;
+        background-color: #8AA8A3;
     `
 
     const NavList = styled.ul`
         list-style-type: none;
         margin: auto;
         display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        width: 60%;
+
+        p {
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+        }
 
         li {
             a, a:link, a:visited, a:focus, a:hover, a:active {
-                color: black;
+                color: white;
+                
                 text-decoration: none !important;
             }
             
-            margin: 10px 20px;
+            margin: auto 10px;
+        }
+
+        li:last-of-type {
+            margin-left: auto;
+            margin-right: 0;
         }
     `
 
     const LogoContainer = styled.li`
-        
         img{
-            height: 20px;
+            height: 35px;
         }
     `
     return (
         <NavbarContainer>
             <NavList>
-                <LogoContainer>
-                    
-                    <Link to='/'><img src={logo} alt="Logo"/></Link>
-                </LogoContainer>
+         
+                <li><LogoContainer><Link to='/'><img src={logo} alt="Logo"/></Link></LogoContainer></li>
 
                 <li>
-                    <Link to='/about'>About</Link>
+                    <Link to='/about'><p>About</p></Link>
                 </li>
 
                 <li>
-                    <Link to='/packs'>Random Pack</Link>
+                    <Link to='/packs'><p>Random Pack</p></Link>
                 </li>
-
-                <li>
-                    <Link to='/packs/add'><AddPackButton>Add a Pack</AddPackButton></Link>
-                </li>
+   
+                <li><Link to='/packs/add'><AddPackButton>Add a Pack</AddPackButton></Link></li>
             </NavList>
+
+            
         </NavbarContainer>
     )
 }
