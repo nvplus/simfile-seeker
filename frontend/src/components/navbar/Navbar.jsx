@@ -28,7 +28,6 @@ const Navbar = () => {
         li {
             a, a:link, a:visited, a:focus, a:hover, a:active {
                 color: white;
-                
                 text-decoration: none !important;
             }
             
