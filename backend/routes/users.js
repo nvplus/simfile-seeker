@@ -9,7 +9,7 @@ router.route('/signup').post((req, res) => {
   // Hash & salt the password
   bcrypt.hash(password, 10)
   .then(hashedPassword => {
-
+    console.log(req.body);
     // Create a new user object w/ the encrypted password and save it.
     const newUser = new User({email, username, password:hashedPassword, user_class, avatar_url});
     newUser.save()
@@ -39,7 +39,7 @@ router.route('/login').post((req, res) => {
   User.findOne({"email": req.body.email}) 
   .then(user => {
     bcrypt.compare(req.body.password, user.password)
-    .then(success => success ? res.send("Authenticated") : res.send("Wrong password"))
+    .then(success => success ? res.status(200).send("Authenticated") : res.status(401).send("Wrong password"))
   })
   .catch(() => res.status(500).send("Error authenticating user."))
 });

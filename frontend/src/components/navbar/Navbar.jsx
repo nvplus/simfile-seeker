@@ -73,8 +73,6 @@ const Navbar = () => {
                 <li><Link to='/packs/add'><AddPackButton>Add a Pack</AddPackButton></Link></li>
 
             </NavList>
-
-            
         </NavbarContainer>
     )
 }
