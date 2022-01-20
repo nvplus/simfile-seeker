@@ -17,7 +17,7 @@ const PackViewer = (props) => {
     `
     return (
         <PackViewerContainer> 
-                {props.packs.map(pack => <PackCard packData={pack} key={pack._id}/>)}
+            {props.packs.map(pack => <PackCard packData={pack} key={pack._id}/>)}
         </PackViewerContainer>
     )
 }

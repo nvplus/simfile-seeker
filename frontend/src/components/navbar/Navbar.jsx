@@ -3,8 +3,15 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import AddPackButton from '../buttons/AddPackButton';
 import logo from "../../assets/icons/logo.png"
+import { useSelector, useDispatch } from "react-redux";
+import { login } from '../../redux/user';
+import AuthService from '../../services/auth-service';
+import RegisterAndLogin from "./RegisterAndLogin.jsx";
 
 const Navbar = () => {
+    const { loggedIn } = useSelector(state => state.login);
+    const dispatch = useDispatch();
+
     const NavbarContainer = styled.div`
         display: flex;
         margin-bottom: 20px;
@@ -58,8 +65,13 @@ const Navbar = () => {
                 <li>
                     <Link to='/packs'><p>Random Pack</p></Link>
                 </li>
+
+                <li>
+                    <RegisterAndLogin />
+                </li>
    
                 <li><Link to='/packs/add'><AddPackButton>Add a Pack</AddPackButton></Link></li>
+
             </NavList>
 
             

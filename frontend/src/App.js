@@ -18,7 +18,6 @@ const AppContainer = styled.div`
 const  App = () => {
   return (
     <>
-
       <Router>
           <Navbar />
             <AppContainer>
