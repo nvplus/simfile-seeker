@@ -57,10 +57,11 @@ router.route('/:id/changepassword').post((req, res) => {
     bcrypt.compare(password, user.password)
     .then(isUnchanged => {
       if (!isUnchanged) {
+
+        // Hash + salt new password, update the database.
         bcrypt.hash(password, 10)
         .then(hashedPassword => {
           user.password = hashedPassword;
-
           user.save()
           .then(() => res.status(200).send("Succesfully updated password."))
           .catch(() => res.status(500).send("Error updating password."))
