@@ -27,7 +27,7 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now()
   },
-  userClass: {
+  user_class: {
     type: String,
     trim: true,
     default: "user"
@@ -36,10 +36,6 @@ const userSchema = new Schema({
     type: String,
     trim: true,
     default: ""
-  },
-  uploadedPacks: {
-    type: Array,
-    default: []
   }
 }, {
   timestamps: true,
