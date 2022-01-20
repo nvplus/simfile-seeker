@@ -55,23 +55,13 @@ const Navbar = () => {
     return (
         <NavbarContainer>
             <NavList>
-         
                 <li><LogoContainer><Link to='/'><img src={logo} alt="Logo"/></Link></LogoContainer></li>
 
-                <li>
-                    <Link to='/about'><p>About</p></Link>
-                </li>
+                <li><Link to='/about'><p>About</p></Link></li>
 
-                <li>
-                    <Link to='/packs'><p>Random Pack</p></Link>
-                </li>
+                <li> <Link to='/packs'><p>Random Pack</p></Link></li>
 
-                <li>
-                    <RegisterAndLogin />
-                </li>
-   
-                <li><Link to='/packs/add'><AddPackButton>Add a Pack</AddPackButton></Link></li>
-
+                <li><RegisterAndLogin /></li>
             </NavList>
         </NavbarContainer>
     )
