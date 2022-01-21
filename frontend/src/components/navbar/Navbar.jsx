@@ -56,7 +56,6 @@ const Navbar = () => {
         <NavbarContainer>
             <NavList>
                 <li><LogoContainer><Link to='/'><img src={logo} alt="Logo"/></Link></LogoContainer></li>
-
                 <li><RegisterAndLogin /></li>
             </NavList>
         </NavbarContainer>
