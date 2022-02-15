@@ -89,8 +89,6 @@ export const PackCard = (props) => {
                     <Button color="error" onClick={handleDeleteButtonClick}>Delete</Button>
                     <DownloadButton download_url={packData.download_url} />
                 </DownloadButtonContainer>
-
-             
             </TextContent>
         </PackContainer>
     )
