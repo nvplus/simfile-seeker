@@ -16,6 +16,8 @@ const PackViewer = (props) => {
         background-color: #424242;
         margin:auto;
         padding: 20px 10px;
+        height: 70vh;
+        overflow-y: scroll;
     `
     return (
         <PackViewerContainer> 
