@@ -9,11 +9,15 @@ import DialogTitle from '@mui/material/DialogTitle';
 import styled from "styled-components";
 import AuthService from '../../services/auth-service';
 import { useForm } from "react-hook-form";
+import { login } from "../../redux/user"
+import { useDispatch } from "react-redux";
 
 const RegisterAndLogin = () => {
     const [open, setOpen] = useState(false);
     const [isRegister, setIsRegister] = useState(false);
     const { register, handleSubmit, reset } = useForm();
+
+    const dispatch = useDispatch();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -55,8 +59,11 @@ const RegisterAndLogin = () => {
 
         else {
             AuthService.login(email, password).then(res => {                
-                if (res.status === 200) {
+                if (res.data.auth) {
+                    dispatch(login(res.data.result))
                     handleClose();
+                    alert(`Logged in as ${res.data.result.username}`);
+                    window.location.reload();
                 }
                 else {
                     alert("error logging in. im sorry...")

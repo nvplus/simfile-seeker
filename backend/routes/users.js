@@ -1,23 +1,9 @@
 const bcrypt = require('bcrypt')
 const router = require('express').Router();
+const jwt = require('jsonwebtoken')
 let User = require('../models/user.model');
 
 // CREATE
-router.route('/signup').post((req, res) => {
-  const {email, username, password, avatar_url, user_class } = req.body;
-
-  // Hash & salt the password
-  bcrypt.hash(password, 10)
-  .then(hashedPassword => {
-    console.log(req.body);
-    // Create a new user object w/ the encrypted password and save it.
-    const newUser = new User({email, username, password:hashedPassword, user_class, avatar_url});
-    newUser.save()
-      .then(user => res.status(201).send(`"Successfully added user '${user.username}' with id '${user.id}'`))
-      .catch(() => res.status(400).send("Error adding new user."));
-  })
-  .catch(err => res.status(500).send("Error hashing."));
-});
 
 // READ
 // Gets all users
@@ -32,16 +18,6 @@ router.route('/:id').get((req, res) => {
   User.findById(req.params.id)
     .then(user => res.json(user))
     .catch(() => res.status(400).send("Error finding user."))
-});
-
-// Authenticate user
-router.route('/login').post((req, res) => {
-  User.findOne({"email": req.body.email}) 
-  .then(user => {
-    bcrypt.compare(req.body.password, user.password)
-    .then(success => success ? res.status(200).send("Authenticated") : res.status(401).send("Wrong password"))
-  })
-  .catch(() => res.status(500).send("Error authenticating user."))
 });
 
 // UPDATE
