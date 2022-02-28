@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "reactstrap": "^9.0.1"
+  },
+  "scripts": {
+    "backend": "cd backend && npx nodemon server.js",
+    "frontend": "cd frontend && npm start"
+  }
+}

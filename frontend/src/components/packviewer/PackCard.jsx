@@ -10,7 +10,7 @@ import axios from "axios";
  * @param {Object} packData  An object containing details of a pack. {author, title, description, banner_url, download_url, tags}
  */
 export const PackCard = (props) => {
-    const { packData } = props;
+    const { packData, showDelete } = props;
 
     const handleDeleteButtonClick = () => {
         axios.delete(`http://localhost:5000/packs/${packData._id}`)
@@ -86,11 +86,9 @@ export const PackCard = (props) => {
                 <Tags tags={packData.tags}/>
                 <Description>{packData.description}</Description>
                 <DownloadButtonContainer>
-                    <Button color="error" onClick={handleDeleteButtonClick}>Delete</Button>
+                    {showDelete && <Button color="error" onClick={handleDeleteButtonClick}>Delete</Button>}
                     <DownloadButton download_url={packData.download_url} />
                 </DownloadButtonContainer>
-
-             
             </TextContent>
         </PackContainer>
     )

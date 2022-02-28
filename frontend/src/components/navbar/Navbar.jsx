@@ -3,8 +3,16 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import AddPackButton from '../buttons/AddPackButton';
 import logo from "../../assets/icons/logo.png"
+import { useDispatch, useSelector } from "react-redux";
+import RegisterAndLogin from "./RegisterAndLogin.jsx";
+import { Button } from "@mui/material"
+import AuthService from '../../services/auth-service';
+import { logout } from "../../redux/user"
 
 const Navbar = () => {
+    const { loggedIn, user } = useSelector(state => state.user);
+    const dispatch = useDispatch();
+
     const NavbarContainer = styled.div`
         display: flex;
         margin-bottom: 20px;
@@ -45,24 +53,26 @@ const Navbar = () => {
             height: 35px;
         }
     `
+
+    const onLogout = () => {
+        AuthService.logout();
+        dispatch(logout());
+        alert("Logged out.")
+        window.location.reload();
+    }
+
     return (
         <NavbarContainer>
             <NavList>
-         
                 <li><LogoContainer><Link to='/'><img src={logo} alt="Logo"/></Link></LogoContainer></li>
-
-                <li>
-                    <Link to='/about'><p>About</p></Link>
-                </li>
-
-                <li>
-                    <Link to='/packs'><p>Random Pack</p></Link>
-                </li>
-   
-                <li><Link to='/packs/add'><AddPackButton>Add a Pack</AddPackButton></Link></li>
+                {!loggedIn && <li><RegisterAndLogin /></li>}
+                {loggedIn && <>
+                    <li><p>Logged in as {user.username}</p></li>
+                    <li><Button onClick={onLogout}>Logout</Button></li>
+                    <li><AddPackButton/></li>
+                </>}
+               
             </NavList>
-
-            
         </NavbarContainer>
     )
 }
