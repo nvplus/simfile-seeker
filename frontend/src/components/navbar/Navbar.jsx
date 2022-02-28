@@ -69,7 +69,7 @@ const Navbar = () => {
                 {loggedIn && <>
                     <li><p>Logged in as {user.username}</p></li>
                     <li><Button onClick={onLogout}>Logout</Button></li>
-                    <li><AddPackButton/></li>
+                    <li><Link to='/packs/add'><AddPackButton/></Link></li>
                 </>}
                
             </NavList>
